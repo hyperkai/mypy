@@ -4822,7 +4822,10 @@ class SemanticAnalyzer(
         if len(call.args) < 1:
             self.fail(f"Too few arguments for {typevarlike_type}()", context)
             return False
-        if not isinstance(call.args[0], StrExpr) or call.arg_kinds[0] != ARG_POS:
+                if call.arg_kinds[0] != ARG_POS:
+            self.fail(f"{typevarlike_type}() expects a positional-only argument as first argument", context)
+            return False
+        elif not isinstance(call.args[0], StrExpr):
             self.fail(f"{typevarlike_type}() expects a string literal as first argument", context)
             return False
         elif call.args[0].value != name:
