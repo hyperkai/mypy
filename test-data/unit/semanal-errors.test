@@ -1010,7 +1010,7 @@ class A(metaclass=f): pass # E: Invalid metaclass "f"
 [case testInvalidTypevarArguments]
 from typing import TypeVar
 a = TypeVar()       # E: Too few arguments for TypeVar()
-b = TypeVar(x='b')  # E: TypeVar() expects a string literal as first argument
+b = TypeVar(x='b')  # E: TypeVar() expects a positional-only argument as first argument
 c = TypeVar(1)      # E: TypeVar() expects a string literal as first argument
 T = TypeVar(b'T')      # E: TypeVar() expects a string literal as first argument
 d = TypeVar('D')    # E: String argument 1 "D" to TypeVar(...) does not match variable name "d"
