@@ -898,7 +898,7 @@ match m:
         reveal_type(m)  # N: Revealed type is "__main__.A[builtins.int]"
         reveal_type(i)  # N: Revealed type is "builtins.int"
 
-[case testMatchClassPatternCaptureFilledGenericTypeAlias]
+[case testMatchClassPatternCaptureCalledGenericTypeAlias]
 from typing import Generic, TypeVar
 
 T = TypeVar('T')
@@ -911,7 +911,7 @@ B = A[int]
 m: object
 
 match m:
-    case B(a=i):  # E: Class pattern class must not be a type alias with type parameters
+    case B(a=i):  # E: "TypeAliasType" not callable
         reveal_type(i)
 
 [case testMatchClassPatternCaptureGenericTypeAlias]
