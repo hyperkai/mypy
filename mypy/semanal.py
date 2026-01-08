@@ -5034,11 +5034,11 @@ class SemanticAnalyzer(
                 default = tv_arg or AnyType(TypeOfAny.from_error)
                 default = self.check_paramspec_default(default, param_value)
             else:
-                # ParamSpec is different from a regular TypeVar:
-                # arguments are not semantically valid. But, allowed in runtime.
+                # ParamSpec is different from a regular TypeVar.
+                # These arguments are not semantically valid. But, allowed in runtime.
                 # So, we need to warn users about possible invalid usage.
                 self.fail(
-                    "The variance and bound arguments to ParamSpec do not have defined semantics yet",
+                    "variance and bound argument to ParamSpec have not defined semantics yet",
                     s,
                 )
 
