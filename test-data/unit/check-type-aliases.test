@@ -1239,6 +1239,18 @@ v1: TA[*list[int]]         # E: "list[int]" cannot be unpacked (must be tuple or
 v2: TA[Unpack[list[int]]]  # E: "list[int]" cannot be unpacked (must be tuple or TypeVarTuple)
 [builtins fixtures/tuple.pyi]
 
+[case testTypeAliasArgOfTypeAliasIsTuple]
+from typing_extensions import TypeAlias
+from typing import TypeVarTuple, Unpack
+
+Ts = TypeVarTuple('Ts')
+
+TA: TypeAlias = tuple[Unpack[Ts]]
+
+v1: TA[*list[int]]         # E: "list[int]" cannot be unpacked (must be tuple or TypeVarTuple)
+v2: TA[Unpack[list[int]]]  # E: "list[int]" cannot be unpacked (must be tuple or TypeVarTuple)
+[builtins fixtures/tuple.pyi]
+
 [case testAliasInstanceNameClash]
 from lib import func
 class A: ...
